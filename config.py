@@ -14,7 +14,7 @@ word2idx_file = "./data/word2idx.pkl"
 model_path = "./save/model.pt"
 
 device = "cuda:1"
-use_gpu = True
+use_gpu = False
 debug = False
 vocab_size = 45000
 freeze_embedding = True

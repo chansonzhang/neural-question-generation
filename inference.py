@@ -47,7 +47,7 @@ class BeamSearcher(object):
         self.tok2idx = word2idx
         self.idx2tok = {idx: tok for tok, idx in self.tok2idx.items()}
         self.model = Seq2seq()
-        state_dict = torch.load(model_path)
+        state_dict = torch.load(model_path,map_location='cpu')
         self.model.load_state_dict(state_dict)
         self.model.eval()
         self.moddel = self.model.to(config.device)
@@ -60,7 +60,7 @@ class BeamSearcher(object):
         # dummy file for evaluation
         with open(self.src_file, "w") as f:
             for i in range(len(self.data_loader)):
-                f.write(i+"\n")
+                f.write("{}\n".format(i))
 
     @staticmethod
     def sort_hypotheses(hypotheses):
